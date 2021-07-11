@@ -1,17 +1,17 @@
 def island_hopper(grid)
-  bottom = grid.size
-  edge = grid[0].size
+  bottom = grid.size - 1
+  edge = grid[0].size - 1
   islands = []
 
   (0..bottom).to_a.each do |vertical|
     (0..edge).each do |horizontal|
       if grid[vertical][horizontal] == "1" && undiscovered?(vertical, horizontal, islands)
-        islands += find_water(vertical, horizontal, grid)
+        islands << find_water(vertical, horizontal, grid)
       end
     end
   end
 
-  puts "Number of islands: #{islands.size}"
+  return "Number of islands: #{islands.size}"
 end
 
 def undiscovered?(vertical, horizontal, islands)
@@ -24,8 +24,8 @@ def undiscovered?(vertical, horizontal, islands)
 end
 
 def find_water(vertical, horizontal, grid)
-  bottom = grid.size
-  edge = grid[0].size
+  bottom = grid.size - 1
+  edge = grid[0].size - 1
 
   ret = [[vertical, horizontal]]
 
